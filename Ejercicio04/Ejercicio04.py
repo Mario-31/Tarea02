@@ -1,6 +1,60 @@
-class Coleccion:
-    def __init__(self):
+from abc import ABC
+from abc import abstractmethod
+class Coleccionx(ABC):
+    def _init_(self, elementos=[]):
         self.data = []
+        for elemento in elementos:
+            self.agregar(elemento)
+    @abstractmethod
+    def esta_vacia(self):
+        pass
+    @abstractmethod
+    def limpiar(self):
+        pass
+    @abstractmethod
+    def tamanio(self):
+        pass
+    @abstractmethod
+    def eliminar_min(self):
+        pass
+    @abstractmethod
+    def eliminar_max(self):
+        pass
+    @abstractmethod
+    def agregar(self, elemento):
+        pass
+    @abstractmethod
+    def _busqueda_binaria(self, elemento):
+        pass
+    @abstractmethod
+    def buscar_elemento(self, elemento):
+        pass
+    @abstractmethod
+    def cuantos(self, elemento):
+        pass
+    @abstractmethod
+    def obtener_subcoleccion(self, elemento):
+        pass
+    @abstractmethod
+    def obtener_subcoleccion_rango(self, primer_elemento, segundo_elemento):
+        pass
+    @abstractmethod
+    def subcoleccion_sin_repeticion(self):
+        pass
+    @abstractmethod
+    def remplazar(self, elemento, nuevo):
+        pass
+    @abstractmethod
+    def eq(self, otra):
+        pass
+    @abstractmethod
+    def imprimir_ascendente(self):
+        pass
+    @abstractmethod
+    def imprimir_descendente(self):
+        pass
+
+class Coleccion(Coleccionx):
 
     # Método para verificar si la colección está vacía
     def esta_vacia(self):
@@ -103,3 +157,49 @@ class Coleccion:
     # Método para imprimir de forma descendente
     def imprimir_descendente(self):
         print([x for x in reversed(self.data) if x is not None])
+
+
+
+# Crear un objeto de la clase Coleccion
+mi_coleccion = Coleccion()
+
+# Agregar elementos a la colección
+mi_coleccion.agregar(5)
+mi_coleccion.agregar(2)
+mi_coleccion.agregar(8)
+mi_coleccion.agregar(1)
+
+# Imprimir la colección en orden ascendente
+print("Colección en orden ascendente:")
+mi_coleccion.imprimir_ascendente()
+
+# Imprimir la colección en orden descendente
+print("Colección en orden descendente:")
+mi_coleccion.imprimir_descendente()
+
+# Verificar si la colección está vacía
+print("¿La colección está vacía?", mi_coleccion.esta_vacia())
+
+# Obtener el tamaño de la colección
+print("Tamaño de la colección:", mi_coleccion.tamanio())
+
+# Buscar un elemento en la colección
+elemento_a_buscar = 2
+posicion = mi_coleccion.buscar_elemento(elemento_a_buscar)
+if posicion != -1:
+    print(f"El elemento {elemento_a_buscar} se encuentra en la posición {posicion}.")
+else:
+    print(f"El elemento {elemento_a_buscar} no se encuentra en la colección.")
+
+# Eliminar el elemento mínimo
+mi_coleccion.eliminar_min()
+print("Colección después de eliminar el elemento mínimo:")
+mi_coleccion.imprimir_ascendente()
+
+# Eliminar el elemento máximo
+mi_coleccion.eliminar_max()
+print("Colección después de eliminar el elemento máximo:")
+mi_coleccion.imprimir_ascendente()
+
+coleccion2= Coleccion([1,2,3,4])
+coleccion2.imprimir_ascendente()
